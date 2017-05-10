@@ -1,0 +1,43 @@
+<div class="row">
+  <div class="col-xs-4">
+    <h3>Cardio (Difficulty)</h3>
+    <div>
+      <app-exercise-item
+        *ngFor="let exerciseEl of cardioExercises"
+        [exercise]="exerciseEl"></app-exercise-item>
+    </div>
+  </div>
+  <div class="col-xs-4">
+    <h3>Machines (Difficulty)</h3>
+    <div>
+      <app-exercise-item
+        *ngFor="let exerciseEl of machineExercises"
+        [exercise]="exerciseEl"></app-exercise-item>
+    </div>
+  </div>
+  <div class="col-xs-4">
+    <h3>Body (Difficulty)</h3>
+    <div>
+      <app-exercise-item
+        *ngFor="let exerciseEl of bodyExercises"
+        [exercise]="exerciseEl"></app-exercise-item>
+    </div>
+  </div>
+</div>
+<hr>
+<div class="row">
+  <div class="col-xs-12">
+    <h3>Result</h3>
+    <div>
+      <app-exercise-item
+        *ngFor="let exerciseEl of resultExercises"
+        [exercise]="exerciseEl"></app-exercise-item>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <span class="pull-right">
+    <h4>Difficulty average: {{difficultyAverage | roundNumber}}</h4>
+  </span>
+</div>
+
