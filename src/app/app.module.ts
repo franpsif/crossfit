@@ -15,6 +15,7 @@ import { DifficultyColorPipe } from './pipe/difficulty-color.pipe';
 import { AddItemComponent } from './designer/add-item/add-item.component';
 import { MaterialModule } from '@angular/material';
 import { DifficultyValidationDirective } from './directive/difficulty-validation.directive';
+import { SaveDialogComponent } from './designer/save-dialog/save-dialog.component';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { DifficultyValidationDirective } from './directive/difficulty-validation
     ResultItemComponent,
     DifficultyColorPipe,
     AddItemComponent,
-    DifficultyValidationDirective
+    DifficultyValidationDirective,
+    SaveDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -38,7 +40,8 @@ import { DifficultyValidationDirective } from './directive/difficulty-validation
     MaterialModule
   ],
   entryComponents: [
-    AddItemComponent
+    AddItemComponent,
+    SaveDialogComponent
   ],
   providers: [ExerciseService],
   bootstrap: [AppComponent]

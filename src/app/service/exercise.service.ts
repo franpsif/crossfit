@@ -2,6 +2,7 @@ import { arraysAreEqual } from 'tslint/lib/utils';
 import { Exercise } from './../model/exercise.model';
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs/Subject';
+import { Http } from '@angular/http';
 
 @Injectable()
 export class ExerciseService {
@@ -21,7 +22,7 @@ export class ExerciseService {
     new Exercise('Thruster', 8), new Exercise('Pull up', 3)];
   private resultExercises: Exercise[] = [];
 
-  constructor() { }
+  constructor(private http: Http) { }
 
   addExerciseToResult(exercise: Exercise) {
     this.resultExercises.push(exercise);
@@ -45,6 +46,10 @@ export class ExerciseService {
       this.emitBodyChanges();
     }
     this.emitResultChanges();
+  }
+
+  saveRoutine() {
+    return this.http.post('https://becomehalterofilico.firebaseio.com/routines.json', this.resultExercises);
   }
 
   resetResultList() {

@@ -1,3 +1,4 @@
+import { SaveDialogComponent } from './save-dialog/save-dialog.component';
 import { AddItemComponent } from './add-item/add-item.component';
 import { ExerciseService } from './../service/exercise.service';
 import { Exercise } from './../model/exercise.model';
@@ -53,6 +54,21 @@ export class DesignerComponent implements OnInit, OnDestroy {
         this.exerciseService.addExerciseToList(listType, exercise);
       }
     });
+  }
+
+  onSaveRoutine() {
+    this.exerciseService.saveRoutine().subscribe(
+        (response) => this.saveDialog('Routine saved!'),
+        (error) => this.saveDialog('Error saving routine')
+    );
+  }
+
+  saveDialog(message: string) {
+    const dialog = this.dialog.open(SaveDialogComponent, {
+      height: '240px',
+      width: '270px'
+    });
+    dialog.componentInstance.message = message;
   }
 
   onResetRoutine() {
