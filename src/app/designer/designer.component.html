@@ -1,43 +1,62 @@
 <div class="row">
   <div class="col-xs-4">
-    <h3>Cardio (Difficulty)</h3>
-    <div>
+    <h3>Cardio <small>(Difficulty)</small></h3>
+    <div style="overflow-y:auto; max-height: 300px;" id="custom-scroll-style">
       <app-exercise-item
         *ngFor="let exerciseEl of cardioExercises"
         [exercise]="exerciseEl"></app-exercise-item>
     </div>
+    <br>
+    <button class="btn btn-success" (click)="onAddExercise(1)">Add</button>
   </div>
   <div class="col-xs-4">
-    <h3>Machines (Difficulty)</h3>
-    <div>
+    <h3>Machines <small>(Difficulty)</small></h3>
+    <div style="overflow-y:auto; max-height: 300px;" id="custom-scroll-style">
       <app-exercise-item
         *ngFor="let exerciseEl of machineExercises"
         [exercise]="exerciseEl"></app-exercise-item>
     </div>
+    <br>
+    <button class="btn btn-success" (click)="onAddExercise(2)">Add</button>
   </div>
   <div class="col-xs-4">
-    <h3>Body (Difficulty)</h3>
-    <div>
+    <h3>Body <small>(Difficulty)</small></h3>
+    <div style="overflow-y:auto; max-height: 300px;" id="custom-scroll-style">
       <app-exercise-item
         *ngFor="let exerciseEl of bodyExercises"
         [exercise]="exerciseEl"></app-exercise-item>
     </div>
+    <br>
+    <button class="btn btn-success" (click)="onAddExercise(3)">Add</button>
   </div>
 </div>
 <hr>
-<div class="row">
-  <div class="col-xs-12">
-    <h3>Result</h3>
-    <div>
-      <app-exercise-item
-        *ngFor="let exerciseEl of resultExercises"
-        [exercise]="exerciseEl"></app-exercise-item>
+<div *ngIf="resultExercises.length > 0; else noResultsMessage">
+  <div class="row">
+    <div class="col-xs-12">
+      <h3>Routine</h3>
+      <div style="overflow-y:auto; max-height: 400px;" id="custom-scroll-style">
+        <app-result-item
+          *ngFor="let exerciseEl of resultExercises"
+          [exercise]="exerciseEl"></app-result-item>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <span class="pull-right">
+      <h4 #difficulty>Difficulty average: {{difficultyAverage | roundNumber | difficultyColor:difficulty}}</h4>
+    </span>
+  </div>
+  <div class="row">
+    <div class="col-xs-offset-4">
+      <button class="btn btn-success">Save routine</button>
+      <button class="btn btn-danger" (click)="onResetRoutine()">Reset routine</button>
     </div>
   </div>
 </div>
-<div class="row">
-  <span class="pull-right">
-    <h4>Difficulty average: {{difficultyAverage | roundNumber}}</h4>
-  </span>
-</div>
+<ng-template #noResultsMessage>
+  <div class="row">
+    <h3>Select exercises from the lists</h3>
+  </div>
+</ng-template>
 

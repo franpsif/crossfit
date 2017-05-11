@@ -1,3 +1,4 @@
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ExerciseService } from './service/exercise.service';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -9,6 +10,11 @@ import { HttpModule } from '@angular/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { ExerciseItemComponent } from './designer/exercise-item/exercise-item.component';
 import { RoundNumberPipe } from './pipe/round-number.pipe';
+import { ResultItemComponent } from './designer/result-item/result-item.component';
+import { DifficultyColorPipe } from './pipe/difficulty-color.pipe';
+import { AddItemComponent } from './designer/add-item/add-item.component';
+import { MaterialModule } from '@angular/material';
+import { DifficultyValidationDirective } from './directive/difficulty-validation.directive';
 
 
 @NgModule({
@@ -17,13 +23,22 @@ import { RoundNumberPipe } from './pipe/round-number.pipe';
     HeaderComponent,
     DesignerComponent,
     ExerciseItemComponent,
-    RoundNumberPipe
+    RoundNumberPipe,
+    ResultItemComponent,
+    DifficultyColorPipe,
+    AddItemComponent,
+    DifficultyValidationDirective
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    MaterialModule
+  ],
+  entryComponents: [
+    AddItemComponent
   ],
   providers: [ExerciseService],
   bootstrap: [AppComponent]

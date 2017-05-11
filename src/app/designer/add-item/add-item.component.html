@@ -1,0 +1,28 @@
+<h2 md-dialog-title>Add a new exercise</h2>
+
+<div class="row">
+  <div class="col-xs-12">
+    <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+      <md-dialog-content>
+        <div class="row">
+          <div class="col-sm5 form-group">
+            <label for="name">Exercise name</label>
+            <input autocomplete="off" type="text" name="name" id="name" class="form-control" ngModel required>
+          </div>          
+        </div>
+        <div class="row">
+          <div class="col-sm5 form-group">
+            <label for="difficulty">Difficulty</label>
+            <input autocomplete="off" type="number" name="difficulty" id="difficulty" class="form-control" ngModel required appDifficultyValidation>
+          </div>          
+        </div>
+      </md-dialog-content>
+      <md-dialog-actions>
+        <button [disabled]="!f.valid" type="submit" style="margin-right: 3px;" class="btn btn-success">Save</button>
+        <button md-dialog-close class="btn btn-danger">Cancel</button>
+      </md-dialog-actions>
+    </form>
+  </div>
+</div>
+
+

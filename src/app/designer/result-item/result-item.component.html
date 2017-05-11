@@ -1,7 +1,7 @@
 <a
  style="cursor:pointer"
  class="list-group-item clearfix"
- (click)="onExerciseClicked()">
+ (click)="onResultClicked()">
   <span class="pull-left">
       <h4 class="list-group-item-heading">{{exercise.name}}</h4>
   </span>
@@ -9,3 +9,4 @@
     <p class="list-group-item-text" #difficulty>{{exercise.difficulty | difficultyColor:difficulty}}</p>
   </span>
 </a>
+
