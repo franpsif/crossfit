@@ -18,20 +18,16 @@ export class DesignerComponent implements OnInit, OnDestroy {
   bodySubscription: Subscription;
 
   difficultyAverage = 0;
-  cardioExercises: Exercise[];
-  machineExercises: Exercise[];
-  bodyExercises: Exercise[];
-  resultExercises: Exercise[];
+  cardioExercises: Exercise[] = [];
+  machineExercises: Exercise[] = [];
+  bodyExercises: Exercise[] = [];
+  resultExercises: Exercise[] = [];
 
   constructor(private exerciseService: ExerciseService, private dialog: MdDialog) { }
 
   ngOnInit() {
-    this.cardioExercises = this.exerciseService.getCardioExercises();
-    this.machineExercises = this.exerciseService.getMachineExercises();
-    this.bodyExercises = this.exerciseService.getBodyExercises();
-    this.resultExercises = this.exerciseService.getResultExercises();
-
     this.subscribeToChanges();
+    this.exerciseService.fetchAllExercises();
   }
 
   calculateNewAverage() {
@@ -49,11 +45,7 @@ export class DesignerComponent implements OnInit, OnDestroy {
       height: '300px',
       width: '500px'
     });
-    dialogRef.afterClosed().subscribe(exercise => {
-      if (exercise) {
-        this.exerciseService.addExerciseToList(listType, exercise);
-      }
-    });
+    dialogRef.componentInstance.listType = listType;
   }
 
   onSaveRoutine() {
