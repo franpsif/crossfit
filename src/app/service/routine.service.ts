@@ -32,6 +32,10 @@ export class RoutineService {
     return this.newRoutine.exercises.slice();
   }
 
+  getRoutineList() {
+    return this.routineList;
+  }
+
   saveNewRoutine(name: string) {
     this.newRoutine.name = name;
     this.routineList.push(this.newRoutine);

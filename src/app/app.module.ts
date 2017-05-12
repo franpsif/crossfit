@@ -17,6 +17,7 @@ import { HttpModule } from '@angular/http';
 import { MaterialModule } from '@angular/material';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { RoutineNameValidationDirective } from './directive/routine-name-validation.directive';
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     DifficultyColorPipe,
     AddItemComponent,
     DifficultyValidationDirective,
-    SaveRoutineDialogComponent
+    SaveRoutineDialogComponent,
+    RoutineNameValidationDirective
   ],
   imports: [
     BrowserModule,
