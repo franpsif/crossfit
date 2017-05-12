@@ -1,6 +1,6 @@
-import { ExerciseService } from './../../service/exercise.service';
 import { Exercise } from './../../model/exercise.model';
-import { Component, OnInit, Input } from '@angular/core';
+import { RoutineService } from './../../service/routine.service';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-exercise-item',
@@ -10,12 +10,12 @@ import { Component, OnInit, Input } from '@angular/core';
 export class ExerciseItemComponent implements OnInit {
   @Input() exercise: Exercise;
 
-  constructor(private exerciseService: ExerciseService) { }
+  constructor(private routineService: RoutineService) { }
 
   ngOnInit() {
   }
 
   onExerciseClicked() {
-    this.exerciseService.addExerciseToResult(this.exercise);
+    this.routineService.addExerciseToResult(this.exercise);
   }
 }

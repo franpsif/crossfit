@@ -1,10 +1,11 @@
-import { SaveDialogComponent } from './save-dialog/save-dialog.component';
-import { AddItemComponent } from './add-item/add-item.component';
-import { ExerciseService } from './../service/exercise.service';
 import { Exercise } from './../model/exercise.model';
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Subscription } from 'rxjs/Subscription';
+import { ExerciseService } from './../service/exercise.service';
+import { RoutineService } from './../service/routine.service';
+import { AddItemComponent } from './add-item/add-item.component';
+import { SaveRoutineDialogComponent } from './save-routine-dialog/save-routine-dialog.component';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MdDialog } from '@angular/material';
+import { Subscription } from 'rxjs/Subscription';
 
 @Component({
   selector: 'app-designer',
@@ -23,7 +24,7 @@ export class DesignerComponent implements OnInit, OnDestroy {
   bodyExercises: Exercise[] = [];
   resultExercises: Exercise[] = [];
 
-  constructor(private exerciseService: ExerciseService, private dialog: MdDialog) { }
+  constructor(private exerciseService: ExerciseService, private dialog: MdDialog, private routineService: RoutineService) { }
 
   ngOnInit() {
     this.subscribeToChanges();
@@ -49,26 +50,18 @@ export class DesignerComponent implements OnInit, OnDestroy {
   }
 
   onSaveRoutine() {
-    this.exerciseService.saveRoutine().subscribe(
-        (response) => this.saveDialog('Routine saved!'),
-        (error) => this.saveDialog('Error saving routine')
-    );
-  }
-
-  saveDialog(message: string) {
-    const dialog = this.dialog.open(SaveDialogComponent, {
-      height: '240px',
-      width: '270px'
+    let dialogRef = this.dialog.open(SaveRoutineDialogComponent, {
+      height: '210px',
+      width: '400px'
     });
-    dialog.componentInstance.message = message;
   }
 
   onResetRoutine() {
-    this.exerciseService.resetResultList();
+    this.routineService.resetResultList();
   }
 
   subscribeToChanges() {
-    this.resultSubscription = this.exerciseService.resultListModified
+    this.resultSubscription = this.routineService.resultListModified
     .subscribe((exercises: Exercise[]) => {
       this.resultExercises = exercises;
       this.calculateNewAverage();

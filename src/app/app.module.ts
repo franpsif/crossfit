@@ -1,21 +1,22 @@
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ExerciseService } from './service/exercise.service';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './core/header/header.component';
+import { AddItemComponent } from './designer/add-item/add-item.component';
 import { DesignerComponent } from './designer/designer.component';
+import { ExerciseItemComponent } from './designer/exercise-item/exercise-item.component';
+import { ResultItemComponent } from './designer/result-item/result-item.component';
+import { SaveRoutineDialogComponent } from './designer/save-routine-dialog/save-routine-dialog.component';
+import { DifficultyValidationDirective } from './directive/difficulty-validation.directive';
+import { DifficultyColorPipe } from './pipe/difficulty-color.pipe';
+import { RoundNumberPipe } from './pipe/round-number.pipe';
+import { ExerciseService } from './service/exercise.service';
+import { RoutineService } from './service/routine.service';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-import { BrowserModule } from '@angular/platform-browser';
-import { ExerciseItemComponent } from './designer/exercise-item/exercise-item.component';
-import { RoundNumberPipe } from './pipe/round-number.pipe';
-import { ResultItemComponent } from './designer/result-item/result-item.component';
-import { DifficultyColorPipe } from './pipe/difficulty-color.pipe';
-import { AddItemComponent } from './designer/add-item/add-item.component';
 import { MaterialModule } from '@angular/material';
-import { DifficultyValidationDirective } from './directive/difficulty-validation.directive';
-import { SaveDialogComponent } from './designer/save-dialog/save-dialog.component';
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 @NgModule({
@@ -29,7 +30,7 @@ import { SaveDialogComponent } from './designer/save-dialog/save-dialog.componen
     DifficultyColorPipe,
     AddItemComponent,
     DifficultyValidationDirective,
-    SaveDialogComponent
+    SaveRoutineDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -41,9 +42,9 @@ import { SaveDialogComponent } from './designer/save-dialog/save-dialog.componen
   ],
   entryComponents: [
     AddItemComponent,
-    SaveDialogComponent
+    SaveRoutineDialogComponent
   ],
-  providers: [ExerciseService],
+  providers: [ExerciseService, RoutineService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,6 +1,6 @@
-import { ExerciseService } from './../../service/exercise.service';
 import { Exercise } from './../../model/exercise.model';
-import { Component, OnInit, Input } from '@angular/core';
+import { RoutineService } from './../../service/routine.service';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-result-item',
@@ -10,13 +10,12 @@ import { Component, OnInit, Input } from '@angular/core';
 export class ResultItemComponent implements OnInit {
   @Input() exercise: Exercise;
 
-  constructor(private exerciseService: ExerciseService) { }
+  constructor(private routineService: RoutineService) { }
 
   ngOnInit() {
   }
 
   onResultClicked() {
-    this.exerciseService.removeExerciseFromResult(this.exercise);
+    this.routineService.removeExerciseFromResult(this.exercise);
   }
-
 }

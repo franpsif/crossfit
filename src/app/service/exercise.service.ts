@@ -1,9 +1,8 @@
-import { arraysAreEqual } from 'tslint/lib/utils';
 import { Exercise } from './../model/exercise.model';
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs/Subject';
 import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
+import { Subject } from 'rxjs/Subject';
 
 @Injectable()
 export class ExerciseService {
@@ -15,23 +14,8 @@ export class ExerciseService {
   private cardioExercises: Exercise[] = [];
   private machineExercises: Exercise[] = [];
   private bodyExercises: Exercise[] = [];
-  private resultExercises: Exercise[] = [];
 
   constructor(private http: Http) { }
-
-  addExerciseToResult(exercise: Exercise) {
-    this.resultExercises.push(exercise);
-    this.emitResultChanges();
-  }
-
-  removeExerciseFromResult(exercise: Exercise) {
-    this.resultExercises.splice(this.resultExercises.indexOf(exercise), 1);
-    this.emitResultChanges();
-  }
-
-  saveRoutine() {
-    return this.http.post('https://becomehalterofilico.firebaseio.com/routines.json', this.resultExercises);
-  }
 
   saveNewCardioExercise(exercise: Exercise) {
     this.cardioExercises.push(exercise);
@@ -123,15 +107,6 @@ export class ExerciseService {
     ).subscribe();
   }
 
-  resetResultList() {
-    this.resultExercises = [];
-    this.emitResultChanges();
-  }
-
-  emitResultChanges() {
-    this.resultListModified.next(this.getResultExercises());
-  }
-
   emitCardioChanges() {
     this.cardioListModified.next(this.getCardioExercises());
   }
@@ -154,9 +129,5 @@ export class ExerciseService {
 
   getBodyExercises() {
     return this.bodyExercises.slice();
-  }
-
-  getResultExercises() {
-    return this.resultExercises.slice();
   }
 }
