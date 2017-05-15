@@ -18,6 +18,8 @@ import { MaterialModule } from '@angular/material';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RoutineNameValidationDirective } from './directive/routine-name-validation.directive';
+import { RoutinesComponent } from './routines/routines.component';
+import { RoutineItemComponent } from './routines/routine-item/routine-item.component';
 
 
 @NgModule({
@@ -32,7 +34,9 @@ import { RoutineNameValidationDirective } from './directive/routine-name-validat
     AddItemComponent,
     DifficultyValidationDirective,
     SaveRoutineDialogComponent,
-    RoutineNameValidationDirective
+    RoutineNameValidationDirective,
+    RoutinesComponent,
+    RoutineItemComponent
   ],
   imports: [
     BrowserModule,

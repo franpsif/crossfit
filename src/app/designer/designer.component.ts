@@ -27,8 +27,15 @@ export class DesignerComponent implements OnInit, OnDestroy {
   constructor(private exerciseService: ExerciseService, private dialog: MdDialog, private routineService: RoutineService) { }
 
   ngOnInit() {
+    this.cardioExercises = this.exerciseService.getCardioExercises();
+    this.machineExercises = this.exerciseService.getMachineExercises();
+    this.bodyExercises = this.exerciseService.getBodyExercises();
+
     this.subscribeToChanges();
-    this.exerciseService.fetchAllExercises();
+
+    if (this.cardioExercises.length === 0 || this.machineExercises.length === 0 || this.bodyExercises.length === 0) {
+      this.exerciseService.fetchAllExercises();
+    }
   }
 
   calculateNewAverage() {
