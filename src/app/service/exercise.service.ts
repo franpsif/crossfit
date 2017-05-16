@@ -17,6 +17,48 @@ export class ExerciseService {
 
   constructor(private http: Http) { }
 
+  saveNewExercise(name: string, difficulty: number, listType: number, exampleLink: string) {
+    let newExercise;
+
+    if (listType === 1) {
+      newExercise = new Exercise(name, difficulty, this.calculateId(), 1, exampleLink);
+      return this.saveNewCardioExercise(newExercise);
+    } else if (listType === 2) {
+      newExercise = new Exercise(name, difficulty, this.calculateId(), 2, exampleLink);
+      return this.saveNewMachinesExercise(newExercise);
+    } else if (listType === 3) {
+      newExercise = new Exercise(name, difficulty, this.calculateId(), 3, exampleLink);
+      return this.saveNewBodyExercise(newExercise);
+    }
+  }
+
+  calculateId() {
+    const maxCardioId = this.cardioExercises.length > 0 ? this.cardioExercises[this.cardioExercises.length - 1].id : 0;
+    const maxMachineId = this.machineExercises.length > 0 ? this.machineExercises[this.machineExercises.length - 1].id : 0;
+    const maxBodyId = this.bodyExercises.length > 0 ? this.bodyExercises[this.bodyExercises.length - 1].id : 0;
+
+    let maxId = maxCardioId > maxMachineId ? maxCardioId : maxMachineId;
+    maxId = maxId > maxBodyId ? maxId : maxBodyId;
+
+    return maxId + 1;
+  }
+
+  getExercise(id: number) {
+    let exercise: Exercise;
+
+    exercise = this.cardioExercises.find(cardioExercise => cardioExercise.id === id);
+
+    if (!exercise) {
+      exercise = this.machineExercises.find(machineExercise => machineExercise.id === id);
+
+      if (!exercise) {
+        exercise = this.bodyExercises.find(bodyExercise => bodyExercise.id === id);
+      }
+    }
+
+    return exercise;
+  }
+
   saveNewCardioExercise(exercise: Exercise) {
     this.cardioExercises.push(exercise);
     this.emitCardioChanges();

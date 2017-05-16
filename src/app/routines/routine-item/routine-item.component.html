@@ -1,6 +1,7 @@
 <div class="row">
+  <hr>
   <h2 style="display: inline-block;">{{ routine.name }} </h2>
-  <h2 style="display: inline-block;" #averageItem>({{ average | difficultyColor:averageItem }})</h2>
+  <h2 style="display: inline-block;" #averageItem>({{ average | roundNumber | difficultyColor:averageItem }})</h2>
   <div class="row">
     <div class="col-xs-12">
       <md-chip-list>
@@ -8,12 +9,12 @@
         *ngFor="let exercise of routine.exercises" 
         color="primary" 
         selected="false"
-        style="cursor: pointer;"
+        style="cursor: pointer; margin-bottom: 4px;"
+        routerLink="{{exercise.id}}"
         (click)="onItemSelected(item)">
           <h5 style="display: inline-block;">{{ exercise.name }}</h5>
           <h5 style="display: inline-block;" #difficulty>({{ exercise.difficulty | difficultyColor:difficulty }})</h5>
         </md-chip>    
-        <hr>
       </md-chip-list>
     </div>
   </div>

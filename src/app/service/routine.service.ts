@@ -11,7 +11,7 @@ export class RoutineService {
   private newRoutine: Routine = new Routine('', []);
   resultListModified = new Subject<Exercise[]>();
   routineListModified = new Subject<Routine[]>();
-  lastItemSelected
+  lastItemSelected;
 
   constructor(private http: Http) { }
 
@@ -39,8 +39,7 @@ export class RoutineService {
   }
 
   saveNewRoutine(name: string) {
-    this.newRoutine.name = name;
-    this.routineList.push(this.newRoutine);
+    this.routineList.push(new Routine(name, this.newRoutine.exercises));
     this.routineListModified.next(this.getRoutineList());
     return this.http.put('https://becomehalterofilico.firebaseio.com/routines.json', this.routineList);
   }

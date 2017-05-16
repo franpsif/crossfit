@@ -50,7 +50,7 @@ export class DesignerComponent implements OnInit, OnDestroy {
 
   onAddExercise(listType: number) {
     let dialogRef = this.dialog.open(AddItemComponent, {
-      height: '300px',
+      height: '400px',
       width: '500px'
     });
     dialogRef.componentInstance.listType = listType;

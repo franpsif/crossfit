@@ -16,6 +16,12 @@
             <input autocomplete="off" type="number" name="difficulty" id="difficulty" class="form-control" ngModel required appDifficultyValidation>
           </div>          
         </div>
+        <div class="row">
+          <div class="col-sm5 form-group">
+            <label for="exampleLink">Example link</label>
+            <input autocomplete="off" type="text" name="exampleLink" id="exampleLink" class="form-control" ngModel required>
+          </div>          
+        </div>
       </md-dialog-content>
       <md-dialog-actions>
         <button [disabled]="!f.valid" type="submit" style="margin-right: 3px;" class="btn btn-success">Save</button>

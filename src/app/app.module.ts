@@ -20,6 +20,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RoutineNameValidationDirective } from './directive/routine-name-validation.directive';
 import { RoutinesComponent } from './routines/routines.component';
 import { RoutineItemComponent } from './routines/routine-item/routine-item.component';
+import { ExerciseDetailComponent } from './routines/exercise-detail/exercise-detail.component';
+import { CategoryNamePipe } from './pipe/category-name.pipe';
 
 
 @NgModule({
@@ -36,7 +38,9 @@ import { RoutineItemComponent } from './routines/routine-item/routine-item.compo
     SaveRoutineDialogComponent,
     RoutineNameValidationDirective,
     RoutinesComponent,
-    RoutineItemComponent
+    RoutineItemComponent,
+    ExerciseDetailComponent,
+    CategoryNamePipe
   ],
   imports: [
     BrowserModule,

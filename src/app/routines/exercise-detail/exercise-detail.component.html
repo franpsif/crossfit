@@ -1,0 +1,9 @@
+<div class="row">
+  <hr>
+  <h2>{{ exercise.name }}</h2>
+  <h3 style="display:inline-block;">{{ exercise.category | categoryName }}</h3>
+  <h4 style="display:inline-block;" #difficulty> ({{ exercise.difficulty | difficultyColor:difficulty}})</h4>
+  <br><br>
+  <a style="cursor:pointer" href="{{ exercise.exampleLink }}" target="_blank">{{ exercise.exampleLink }}</a>
+  <hr>
+</div>

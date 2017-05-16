@@ -19,26 +19,13 @@ export class AddItemComponent implements OnInit {
 
   onSubmit(form: NgForm) {
     const value = form.value;
-    const newExercise = new Exercise(value.name, value.difficulty);
 
-    if(this.listType === 1) {
-      this.exerciseService.saveNewCardioExercise(newExercise).subscribe(
-        (response) => this.showSnackBar('Exercise saved!'),
-        (error) => this.showSnackBar('Error saving exercise')
-      );
-    } else if (this.listType === 2) {
-      this.exerciseService.saveNewMachinesExercise(newExercise).subscribe(
-        (response) => this.showSnackBar('Exercise saved!'),
-        (error) => this.showSnackBar('Error saving exercise')
-      );
-    } else if (this.listType === 3) {
-      this.exerciseService.saveNewBodyExercise(newExercise).subscribe(
-        (response) => this.showSnackBar('Exercise saved!'),
-        (error) => this.showSnackBar('Error saving exercise')
-      );
-    }
+    this.exerciseService.saveNewExercise(value.name, value.difficulty, this.listType, value.exampleLink).subscribe(
+      (response) => this.showSnackBar('Exercise saved!'),
+      (error) => this.showSnackBar('Error saving exercise')
+    );
 
-    this.dialogRef.close(newExercise);
+    this.dialogRef.close();
   }
 
   showSnackBar(message: string) {

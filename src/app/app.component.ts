@@ -1,3 +1,4 @@
+import { ExerciseService } from './service/exercise.service';
 import { RoutineService } from './service/routine.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -9,9 +10,10 @@ import { Component, OnInit } from '@angular/core';
 export class AppComponent implements OnInit{
   title = 'app works!';
 
-  constructor(private routineService: RoutineService) {}
+  constructor(private routineService: RoutineService, private exerciseService: ExerciseService) {}
 
   ngOnInit() {
     this.routineService.fetchRoutineList();
+    this.exerciseService.fetchAllExercises();
   }
 }
