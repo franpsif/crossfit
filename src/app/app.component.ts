@@ -1,4 +1,4 @@
-import { ExerciseService } from './service/exercise.service';
+import { ExerciseService } from './designer/exercise.service';
 import { RoutineService } from './routines/routine.service';
 import { Component, OnInit } from '@angular/core';
 

@@ -1,5 +1,5 @@
-import { ExerciseService } from './../../service/exercise.service';
-import { Exercise } from './../../model/exercise.model';
+import { ExerciseService } from './../../designer/exercise.service';
+import { Exercise } from './../../shared/exercise.model';
 import { Component, OnInit } from '@angular/core';
 import { MdDialogRef, MdSnackBar } from '@angular/material';
 import { NgForm } from '@angular/forms';

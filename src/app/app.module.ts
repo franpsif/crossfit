@@ -8,7 +8,7 @@ import { ResultItemComponent } from './designer/result-item/result-item.componen
 import { SaveRoutineDialogComponent } from './designer/save-routine-dialog/save-routine-dialog.component';
 import { RoutineService } from './routines/routine.service';
 import { RoutinesModule } from './routines/routines.module';
-import { ExerciseService } from './service/exercise.service';
+import { ExerciseService } from './designer/exercise.service';
 import { SharedModule } from './shared/shared.module';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';

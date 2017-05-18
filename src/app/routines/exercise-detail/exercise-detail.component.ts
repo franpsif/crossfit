@@ -1,4 +1,4 @@
-import { ExerciseService } from '../../service/exercise.service';
+import { ExerciseService } from '../../designer/exercise.service';
 import { Exercise } from '../../shared/exercise.model';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Component, OnInit, Input } from '@angular/core';

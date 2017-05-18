@@ -1,5 +1,5 @@
-import { Exercise } from './../model/exercise.model';
-import { ExerciseService } from './../service/exercise.service';
+import { Exercise } from './../shared/exercise.model';
+import { ExerciseService } from './../designer/exercise.service';
 import { RoutineService } from './../routines/routine.service';
 import { AddItemComponent } from './add-item/add-item.component';
 import { SaveRoutineDialogComponent } from './save-routine-dialog/save-routine-dialog.component';
