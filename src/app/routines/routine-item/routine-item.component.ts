@@ -1,6 +1,6 @@
 import { RoutineService } from './../../routines/routine.service';
 import { ExerciseItemComponent } from './../../designer/exercise-item/exercise-item.component';
-import { Routine } from './../../model/routine.model';
+import { Routine } from './../../shared/routine.model';
 import { Component, OnInit, Input } from '@angular/core';
 
 @Component({

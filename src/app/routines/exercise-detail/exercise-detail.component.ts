@@ -1,5 +1,5 @@
 import { ExerciseService } from '../../service/exercise.service';
-import { Exercise } from '../../model/exercise.model';
+import { Exercise } from '../../shared/exercise.model';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Component, OnInit, Input } from '@angular/core';
 
