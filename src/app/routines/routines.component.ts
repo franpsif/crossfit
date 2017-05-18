@@ -1,4 +1,4 @@
-import { Routine } from './../model/routine.model';
+import { Routine } from './../shared/routine.model';
 import { RoutineService } from './routine.service';
 import { Component, OnInit } from '@angular/core';
 

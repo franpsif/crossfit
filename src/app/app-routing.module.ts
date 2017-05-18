@@ -4,10 +4,7 @@ import { DesignerComponent } from './designer/designer.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-const appRoutes: Routes = [
-    {path: '', component: DesignerComponent},
-    {path: 'designer', component: DesignerComponent}
-];
+const appRoutes: Routes = [];
 
 @NgModule({
     imports: [
