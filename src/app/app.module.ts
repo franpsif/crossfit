@@ -1,10 +1,8 @@
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './core/header/header.component';
-import { AddItemComponent } from './designer/add-item/add-item.component';
+import { CoreModule } from './core/core.module';
 import { DesignerModule } from './designer/designer.module';
 import { ExerciseService } from './designer/exercise.service';
-import { SaveRoutineDialogComponent } from './designer/save-routine-dialog/save-routine-dialog.component';
 import { RoutineService } from './routines/routine.service';
 import { RoutinesModule } from './routines/routines.module';
 import { SharedModule } from './shared/shared.module';
@@ -14,8 +12,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    HeaderComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
@@ -23,7 +20,8 @@ import { BrowserModule } from '@angular/platform-browser';
     AppRoutingModule,
     DesignerModule,
     RoutinesModule,
-    SharedModule
+    SharedModule,
+    CoreModule
   ],
   providers: [ExerciseService, RoutineService],
   bootstrap: [AppComponent]
