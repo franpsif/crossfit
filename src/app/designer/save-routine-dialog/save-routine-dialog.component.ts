@@ -1,4 +1,4 @@
-import { RoutineService } from './../../service/routine.service';
+import { RoutineService } from './../../routines/routine.service';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { MdDialogRef, MdSnackBar } from '@angular/material';

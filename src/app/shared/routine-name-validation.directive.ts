@@ -1,4 +1,4 @@
-import { RoutineService } from './../service/routine.service';
+import { RoutineService } from './../routines/routine.service';
 import { NG_VALIDATORS, Validator, AbstractControl } from '@angular/forms';
 import { Directive } from '@angular/core';
 

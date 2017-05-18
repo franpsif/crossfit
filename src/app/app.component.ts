@@ -1,5 +1,5 @@
 import { ExerciseService } from './service/exercise.service';
-import { RoutineService } from './service/routine.service';
+import { RoutineService } from './routines/routine.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({

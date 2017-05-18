@@ -6,10 +6,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 const appRoutes: Routes = [
     {path: '', component: DesignerComponent},
-    {path: 'designer', component: DesignerComponent},
-    {path: 'routines', component: RoutinesComponent, children: [
-        {path: ':exercise', component: ExerciseDetailComponent}
-    ]}
+    {path: 'designer', component: DesignerComponent}
 ];
 
 @NgModule({

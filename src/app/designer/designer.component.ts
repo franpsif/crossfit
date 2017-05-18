@@ -1,6 +1,6 @@
 import { Exercise } from './../model/exercise.model';
 import { ExerciseService } from './../service/exercise.service';
-import { RoutineService } from './../service/routine.service';
+import { RoutineService } from './../routines/routine.service';
 import { AddItemComponent } from './add-item/add-item.component';
 import { SaveRoutineDialogComponent } from './save-routine-dialog/save-routine-dialog.component';
 import { Component, OnDestroy, OnInit } from '@angular/core';

@@ -1,5 +1,5 @@
 import { Routine } from './../model/routine.model';
-import { RoutineService } from './../service/routine.service';
+import { RoutineService } from './routine.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
