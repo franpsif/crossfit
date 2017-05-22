@@ -1,5 +1,7 @@
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { AuthGuard } from './auth-guard.service';
+import { AuthService } from './auth.service';
 import { CoreModule } from './core/core.module';
 import { DesignerModule } from './designer/designer.module';
 import { ExerciseService } from './designer/exercise.service';
@@ -23,7 +25,7 @@ import { BrowserModule } from '@angular/platform-browser';
     SharedModule,
     CoreModule
   ],
-  providers: [ExerciseService, RoutineService],
+  providers: [ExerciseService, RoutineService, AuthGuard, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
