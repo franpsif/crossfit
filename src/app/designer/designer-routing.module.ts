@@ -1,10 +1,12 @@
-import { RouterModule } from '@angular/router';
+import { MainContainerComponent } from './../core/main-container/main-container.component';
 import { DesignerComponent } from './designer.component';
 import { NgModule } from '@angular/core';
+import { RouterModule } from '@angular/router';
 
 const designerRoutes = [
-    {path: '', component: DesignerComponent},
-    {path: 'designer', component: DesignerComponent}
+    {path: '', component: MainContainerComponent, children: [
+        {path: 'designer', component: DesignerComponent}
+    ]}
 ];
 
 @NgModule({
