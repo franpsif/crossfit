@@ -1,7 +1,7 @@
 import { AuthService } from './../../auth.service';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -9,18 +9,26 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-
-  constructor(private router: Router, private authService: AuthService) { }
+  tenantList: [string];
+  constructor(private router: Router, private authService: AuthService, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
-    if (this.authService.isLogged) {
-      this.router.navigateByUrl('/designer');
-    }
+    this.activatedRoute.fragment.map(fragment => {
+        if (fragment !== '' && fragment !== null) {
+            this.authService.endSignIn(fragment);
+          }
+      });
+
+    this.activatedRoute.fragment.subscribe(
+        (fragment: string) => {
+          if (fragment !== '' && fragment !== null) {
+            this.authService.endSignIn(fragment);
+          }
+        }
+      );
   }
 
-  onSignin(form: NgForm) {
-    this.authService.login();
-    this.router.navigateByUrl('/designer');
+  onSigninWithIds(form: NgForm) {
+    this.authService.loginWithIds();
   }
-
 }

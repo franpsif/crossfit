@@ -16,6 +16,9 @@ import { NgModule } from '@angular/core';
         DifficultyColorPipe,
         RoundNumberPipe
     ],
+    imports: [
+        MaterialModule
+    ],
     exports: [
         CommonModule,
         DifficultyValidationDirective,

@@ -4,7 +4,7 @@
         <div class="row">
           <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
             <img src="../../assets/become_logo.png" class="img-responsive center-block" style="max-height: 200px; margin-bottom: 20px;">
-            <form (ngSubmit)="onSignin(f)" #f="ngForm">
+            <form (ngSubmit)="onSigninWithIds(f)" #f="ngForm">
               <div class="form-group">
                 <label for="mail">Mail</label>
                 <input type="text" id="mail" name="mail" class="form-control" ngModel required email>
@@ -14,8 +14,7 @@
                 <input type="password" id="password" name="password" class="form-control" ngModel required>
               </div>
               <div class="pull-right">
-                <button class="btn btn-success">Log in</button>
-                <button class="btn btn-primary">Log in with IDS</button>
+                <button class="btn btn-primary" type="submit">Log in with IDS</button>
               </div>        
             </form>
           </div>

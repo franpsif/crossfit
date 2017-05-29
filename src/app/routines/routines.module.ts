@@ -1,7 +1,7 @@
+import { RouterModule } from '@angular/router';
 import { SharedModule } from './../shared/shared.module';
 import { ExerciseDetailComponent } from './exercise-detail/exercise-detail.component';
 import { RoutineItemComponent } from './routine-item/routine-item.component';
-import { RoutinesRoutingModule } from './routines-routing.module';
 import { RoutinesComponent } from './routines.component';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
@@ -16,8 +16,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ],
     imports: [
         CommonModule,
-        RoutinesRoutingModule,
-        SharedModule
+        SharedModule,
+        RouterModule
     ],
     providers: [],
     bootstrap: [RoutinesComponent]

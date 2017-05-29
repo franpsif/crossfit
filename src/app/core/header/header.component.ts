@@ -7,10 +7,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
+  userName: string;
 
   constructor(private authService: AuthService) { }
 
   ngOnInit() {
+    this.userName = JSON.parse(localStorage.activeUserInfo).given_name;
   }
 
   onLogout() {

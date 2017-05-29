@@ -16,10 +16,6 @@ export class AppComponent implements OnInit {
     private router: Router) {}
 
   ngOnInit() {
-    if (!this.authService.isLogged) {
-      this.router.navigateByUrl('/login');
-    }
-
     this.routineService.fetchRoutineList();
     this.exerciseService.fetchAllExercises();
   }

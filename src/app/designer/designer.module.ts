@@ -1,6 +1,5 @@
 import { SharedModule } from './../shared/shared.module';
 import { AddItemComponent } from './add-item/add-item.component';
-import { DesignerRoutingModule } from './designer-routing.module';
 import { DesignerComponent } from './designer.component';
 import { ExerciseItemComponent } from './exercise-item/exercise-item.component';
 import { ResultItemComponent } from './result-item/result-item.component';
@@ -18,8 +17,7 @@ import { FormsModule } from '@angular/forms';
     ],
     imports: [
         SharedModule,
-        FormsModule,
-        DesignerRoutingModule
+        FormsModule
     ],
     entryComponents: [
         AddItemComponent,
