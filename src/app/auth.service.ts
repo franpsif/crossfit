@@ -49,10 +49,9 @@ export class AuthService {
   endSignIn(url: string) {
     const me = this;
 
-    me.router.navigateByUrl('/designer');
-
     this.mgr.signinRedirectCallback(url).then(function (loggedUser) {
       me.user = loggedUser;
+      me.router.navigateByUrl('/designer');
     });
   }
 

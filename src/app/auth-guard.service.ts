@@ -8,8 +8,12 @@ export class AuthGuard implements CanActivate {
   constructor(private authService: AuthService) { }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-    //return localStorage.getItem('activeUserToken') !== null;
-    return true;
+    return this.authService.mgr.getUser().then((user) => {
+      if (user && !user.expired) {
+        return true;
+      }
+      return false;
+    });
   }
 
 }
