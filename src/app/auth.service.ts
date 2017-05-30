@@ -39,7 +39,7 @@ export class AuthService {
   }
 
   loginWithIds() {
-    this.mgr.signinRedirect({ data: 'some data' }).then(function () {
+    this.mgr.signinRedirect().then(function () {
       console.log('signinRedirect done');
     }).catch(function (err) {
       console.log(err);

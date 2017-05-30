@@ -12,11 +12,12 @@ export class HeaderComponent implements OnInit {
   constructor(private authService: AuthService) { }
 
   ngOnInit() {
-    this.userName = JSON.parse(localStorage.activeUserInfo).given_name;
+    this.authService.mgr.getUser().then((user) => {
+      this.userName = user.profile.given_name;
+    });
   }
 
   onLogout() {
     this.authService.logout();
   }
-
 }
