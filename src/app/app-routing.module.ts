@@ -16,7 +16,8 @@ const appRoutes: Routes = [
         ]},
     ]},
     {path: 'login', component: LoginComponent},
-    {path: 'silentRenew', component: RenewCatcherComponent}
+    {path: 'silentRenew', component: RenewCatcherComponent},
+    {path: '**', redirectTo: 'designer'}
 ];
 
 @NgModule({

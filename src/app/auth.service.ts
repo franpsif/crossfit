@@ -5,24 +5,24 @@ import { MdDialog } from '@angular/material';
 import { Router } from '@angular/router';
 import { UserManager } from 'oidc-client';
 
-const userManagerSettings: any = {
-      authority: 'https://u4ids-sandbox.u4pp.com/identity',
-      client_id: 'information-browser',
-      redirect_uri: 'http://localhost:4200/login',
-      post_logout_redirect_uri: 'http://localhost:4200/login',
-      response_type: 'id_token token',
-      scope: 'openid preveroemailscope',
-      accessTokenExpiringNotificationTime: 60,
-      acr_values: 'tenant:praetorians',
-      loadUserInfo: true,
-      silent_redirect_uri: 'http://localhost:4200/silentRenew',
-      userinfo_endpoint: 'https://u4ids-sandbox.u4pp.com/identity/connect/userinfo'
-};
-
 @Injectable()
 export class AuthService {
-  mgr: UserManager = new UserManager(userManagerSettings);
+  userManagerSettings: any = {
+    authority: 'https://u4ids-sandbox.u4pp.com/identity',
+    client_id: 'information-browser',
+    redirect_uri: 'http://localhost:4200/login',
+    post_logout_redirect_uri: 'http://localhost:4200/login',
+    response_type: 'id_token token',
+    scope: 'openid preveroemailscope',
+    accessTokenExpiringNotificationTime: 60,
+    acr_values: 'tenant:praetorians',
+    loadUserInfo: true,
+    silent_redirect_uri: 'http://localhost:4200/silentRenew',
+    userinfo_endpoint: 'https://u4ids-sandbox.u4pp.com/identity/connect/userinfo'
+  };
+  mgr: UserManager = new UserManager(this.userManagerSettings);
   user: Oidc.User;
+  extraRedirectUri = '';
 
   constructor(private router: Router, private http: Http, private dialog: MdDialog) {
     this.mgr.events.addAccessTokenExpiring(() => {
@@ -39,19 +39,22 @@ export class AuthService {
   }
 
   loginWithIds() {
-    this.mgr.signinRedirect().then(function () {
+    this.mgr.signinRedirect({redirect_uri: this.userManagerSettings.redirect_uri + '?extraUrl=' + this.extraRedirectUri}).then(function () {
       console.log('signinRedirect done');
     }).catch(function (err) {
       console.log(err);
     });
   }
 
-  endSignIn(url: string) {
+  endSignIn(url: string, extraRedirectUri: string) {
     const me = this;
 
     this.mgr.signinRedirectCallback(url).then(function (loggedUser) {
-      me.user = loggedUser;
-      me.router.navigateByUrl('/designer');
+      if (extraRedirectUri !== undefined && extraRedirectUri !== '') {
+        me.router.navigateByUrl(extraRedirectUri);
+      } else {
+        me.router.navigateByUrl('/designer');
+      }
     });
   }
 
@@ -72,10 +75,12 @@ export class AuthService {
   }
 
   logout() {
-    this.mgr.signoutRedirect({id_token_hint: this.user.id_token}).then(function (resp) {
-      console.log('signed out', resp);
-    }).catch(function (err) {
-      console.log(err);
+    this.mgr.getUser().then((user) => {
+      this.mgr.signoutRedirect({id_token_hint: user.id_token}).then(function (resp) {
+        console.log('signed out', resp);
+      }).catch(function (err) {
+        console.log(err);
+      });
     });
   }
 }
