@@ -37,6 +37,7 @@ export class AuthService {
     });
 
     this.mgr.events.addAccessTokenExpired(() => {
+        this.mgr.removeUser();
         this.dialog.closeAll();
         this.router.navigateByUrl('/login');
     });
