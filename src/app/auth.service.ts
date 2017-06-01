@@ -75,7 +75,7 @@ export class AuthService {
     this.mgr.signinRedirectCallback(url).then(function (loggedUser) {
       me.user = loggedUser;
       if (extraRedirectUri !== undefined && extraRedirectUri !== '') {
-        me.router.navigateByUrl(extraRedirectUri);
+        me.router.navigateByUrl(extraRedirectUri, { preserveQueryParams: false });
       } else {
         me.router.navigateByUrl('/designer');
       }
