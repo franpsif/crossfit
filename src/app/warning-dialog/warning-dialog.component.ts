@@ -10,7 +10,6 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 export class WarningDialogComponent implements OnInit, OnDestroy {
   value = 0;
   counter: Subscription;
-  accessTokenExpiringNotificationTime = 60;
 
   constructor(private authService: AuthService) { }
 
@@ -23,7 +22,7 @@ export class WarningDialogComponent implements OnInit, OnDestroy {
   }
 
   increaseProgress() {
-    this.counter = Observable.timer(0, (100 / this.accessTokenExpiringNotificationTime) * 1000).subscribe(
+    this.counter = Observable.timer(0, (this.authService.userManagerSettings.accessTokenExpiringNotificationTime / 100) * 1000).subscribe(
       () => this.value = this.value + 1);
   }
 

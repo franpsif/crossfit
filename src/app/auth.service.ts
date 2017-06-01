@@ -31,7 +31,8 @@ export class AuthService {
     this.mgr.events.addAccessTokenExpiring(() => {
         this.dialog.open(WarningDialogComponent, {
         height: '210px',
-        width: '400px'
+        width: '400px',
+        disableClose: true
       });
     });
 
