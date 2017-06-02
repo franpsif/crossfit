@@ -29,7 +29,7 @@ export class AuthService {
     const me = this;
 
     this.mgr.events.addAccessTokenExpiring(() => {
-        this.dialog.open(WarningDialogComponent, {
+      this.dialog.open(WarningDialogComponent, {
         height: '210px',
         width: '400px',
         disableClose: true
@@ -43,24 +43,28 @@ export class AuthService {
     });
 
     window.addEventListener('storage', function(storageEvent){
-        me.mgr.getUser().then((user) => {
-          if (user !== me.user) {
-            if (user !== undefined && user !== null) {
-              me.dialog.closeAll();
-              me.mgr.events.load(user);
-              if (me.user === undefined || me.user === null) {
+        const userStored = me.getUserFromStorage();
+        me.dialog.closeAll();
+
+        if (!(userStored != null && me.user != null && userStored.access_token === me.user.access_token)) {
+          if (userStored != null) {
+            me.mgr.getUser().then((user) => {
+              if (me.user == null) {
                 me.router.navigateByUrl('/designer');
               }
               me.user = user;
-            } else {
-              me.user = undefined;
-              me.dialog.closeAll();
-              me.mgr.events.unload();
-              me.router.navigateByUrl('/login');
-            }
+            });
+          } else {
+            me.user = undefined;
+            me.mgr.events.unload();
+            me.router.navigateByUrl('/login');
           }
-        });
+        }
     }, false);
+  }
+
+  getUserFromStorage() {
+    return JSON.parse(localStorage.getItem('oidc.user:https://u4ids-sandbox.u4pp.com/identity:information-browser-implicit'));
   }
 
   loginWithIds() {
