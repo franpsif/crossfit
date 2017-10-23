@@ -30,6 +30,8 @@ export class DesignerComponent implements OnInit, OnDestroy {
     this.cardioExercises = this.exerciseService.getCardioExercises();
     this.machineExercises = this.exerciseService.getMachineExercises();
     this.bodyExercises = this.exerciseService.getBodyExercises();
+    this.resultExercises = this.routineService.getResultExercises();
+    this.calculateNewAverage();
 
     this.subscribeToChanges();
 
