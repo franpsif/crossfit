@@ -15,7 +15,7 @@ export class AuthService {
     response_type: 'id_token token',
     scope: 'openid informationbrowser-user-info',
     accessTokenExpiringNotificationTime: 60,
-    acr_values: 'tenant:praetorians',
+    acr_values: 'tenant:u4pp-sandbox-directory',
     loadUserInfo: true,
     silent_redirect_uri: 'http://localhost:4200/silentRenew',
     userinfo_endpoint: 'https://u4ids-sandbox.u4pp.com/identity/connect/userinfo',
