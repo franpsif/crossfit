@@ -5,7 +5,6 @@ import { RoutineItemComponent } from './routine-item/routine-item.component';
 import { RoutinesComponent } from './routines.component';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { MaterialModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({

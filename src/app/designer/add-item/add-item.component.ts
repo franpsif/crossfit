@@ -1,7 +1,7 @@
 import { ExerciseService } from './../../designer/exercise.service';
 import { Exercise } from './../../shared/exercise.model';
 import { Component, OnInit } from '@angular/core';
-import { MdDialogRef, MdSnackBar } from '@angular/material';
+import { MatDialogRef, MatSnackBar } from '@angular/material';
 import { NgForm } from '@angular/forms';
 
 @Component({
@@ -12,7 +12,7 @@ import { NgForm } from '@angular/forms';
 export class AddItemComponent implements OnInit {
   listType: number;
 
-  constructor(private dialogRef: MdDialogRef<AddItemComponent>, private exerciseService: ExerciseService, private snackBar: MdSnackBar) { }
+  constructor(private dialogRef: MatDialogRef<AddItemComponent>, private exerciseService: ExerciseService, private snackBar: MatSnackBar) { }
 
   ngOnInit() {
   }

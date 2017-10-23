@@ -4,8 +4,8 @@
   <h2 style="display: inline-block;" #averageItem>({{ average | roundNumber | difficultyColor:averageItem }})</h2>
   <div class="row">
     <div class="col-xs-12">
-      <md-chip-list>
-        <md-chip #item
+      <mat-chip-list>
+        <mat-chip #item
         *ngFor="let exercise of routine.exercises" 
         color="primary" 
         selected="false"
@@ -14,8 +14,8 @@
         (click)="onItemSelected(item)">
           <h5 style="display: inline-block;">{{ exercise.name }}</h5>
           <h5 style="display: inline-block;" #difficulty>({{ exercise.difficulty | difficultyColor:difficulty }})</h5>
-        </md-chip>    
-      </md-chip-list>
+        </mat-chip>    
+      </mat-chip-list>
     </div>
   </div>
 </div>

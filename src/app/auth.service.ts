@@ -1,7 +1,7 @@
 import { WarningDialogComponent } from './warning-dialog/warning-dialog.component';
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
-import { MdDialog } from '@angular/material';
+import { MatDialog } from '@angular/material';
 import { Router } from '@angular/router';
 import { UserManager, WebStorageStateStore } from 'oidc-client';
 
@@ -25,7 +25,7 @@ export class AuthService {
   user: Oidc.User;
   extraRedirectUri = '';
 
-  constructor(private router: Router, private http: Http, private dialog: MdDialog) {
+  constructor(private router: Router, private http: Http, private dialog: MatDialog) {
     const me = this;
 
     this.mgr.events.addAccessTokenExpiring(() => {

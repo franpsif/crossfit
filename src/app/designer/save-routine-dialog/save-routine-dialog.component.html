@@ -1,20 +1,20 @@
-<h2 md-dialog-title>Save new routine</h2>
+<h2 mat-dialog-title>Save new routine</h2>
 
 <div class="row">
   <div class="col-xs-12">
     <form (ngSubmit)="onSubmit(f)" #f="ngForm">
-      <md-dialog-content>
+      <mat-dialog-content>
         <div class="row">
           <div class="col-sm5 form-group">
             <label for="name">Set a name for the new routine</label>
             <input autocomplete="off" type="text" name="name" id="name" class="form-control" ngModel required appRoutineNameValidation>
           </div>          
         </div>        
-      </md-dialog-content>
-      <md-dialog-actions>
+      </mat-dialog-content>
+      <mat-dialog-actions>
         <button [disabled]="!f.valid" type="submit" style="margin-right: 3px;" class="btn btn-success">Save</button>
-        <button md-dialog-close class="btn btn-danger">Cancel</button>
-      </md-dialog-actions>
+        <button mat-dialog-close class="btn btn-danger">Cancel</button>
+      </mat-dialog-actions>
     </form>
   </div>
 </div>

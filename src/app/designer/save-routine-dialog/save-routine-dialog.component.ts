@@ -1,7 +1,7 @@
 import { RoutineService } from './../../routines/routine.service';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { MdDialogRef, MdSnackBar } from '@angular/material';
+import { MatDialogRef, MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-save-routine-dialog',
@@ -10,8 +10,8 @@ import { MdDialogRef, MdSnackBar } from '@angular/material';
 })
 export class SaveRoutineDialogComponent implements OnInit {
 
-  constructor(private dialogRef: MdDialogRef<SaveRoutineDialogComponent>,
-      private snackBar: MdSnackBar, private routineService: RoutineService) { }
+  constructor(private dialogRef: MatDialogRef<SaveRoutineDialogComponent>,
+      private snackBar: MatSnackBar, private routineService: RoutineService) { }
 
   ngOnInit() {
   }

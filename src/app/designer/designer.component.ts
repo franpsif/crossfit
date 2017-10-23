@@ -4,7 +4,7 @@ import { RoutineService } from './../routines/routine.service';
 import { AddItemComponent } from './add-item/add-item.component';
 import { SaveRoutineDialogComponent } from './save-routine-dialog/save-routine-dialog.component';
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { MdDialog } from '@angular/material';
+import { MatDialog } from '@angular/material';
 import { Subscription } from 'rxjs/Subscription';
 
 @Component({
@@ -24,7 +24,7 @@ export class DesignerComponent implements OnInit, OnDestroy {
   bodyExercises: Exercise[] = [];
   resultExercises: Exercise[] = [];
 
-  constructor(private exerciseService: ExerciseService, private dialog: MdDialog, private routineService: RoutineService) { }
+  constructor(private exerciseService: ExerciseService, private dialog: MatDialog, private routineService: RoutineService) { }
 
   ngOnInit() {
     this.cardioExercises = this.exerciseService.getCardioExercises();
