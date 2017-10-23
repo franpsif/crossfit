@@ -1,8 +1,5 @@
-import { WarningDialogComponent } from './warning-dialog/warning-dialog.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { AuthGuard } from './auth-guard.service';
-import { AuthService } from './auth.service';
 import { CoreModule } from './core/core.module';
 import { DesignerModule } from './designer/designer.module';
 import { ExerciseService } from './designer/exercise.service';
@@ -16,8 +13,7 @@ import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    WarningDialogComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
@@ -28,8 +24,8 @@ import { RouterModule } from '@angular/router';
     CoreModule,
     SharedModule
   ],
-  providers: [ExerciseService, RoutineService, AuthGuard, AuthService],
+  providers: [ExerciseService, RoutineService],
   bootstrap: [AppComponent],
-  entryComponents: [WarningDialogComponent]
+  entryComponents: []
 })
 export class AppModule { }

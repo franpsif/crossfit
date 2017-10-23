@@ -1,4 +1,3 @@
-import { AuthService } from './../../auth.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -9,15 +8,8 @@ import { Component, OnInit } from '@angular/core';
 export class HeaderComponent implements OnInit {
   userName: string;
 
-  constructor(private authService: AuthService) { }
+  constructor() { }
 
   ngOnInit() {
-    this.authService.mgr.getUser().then((user) => {
-      this.userName = user.profile.given_name;
-    });
-  }
-
-  onLogout() {
-    this.authService.logout();
   }
 }

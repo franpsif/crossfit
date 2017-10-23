@@ -1,4 +1,3 @@
-import { AuthService } from './auth.service';
 import { ExerciseService } from './designer/exercise.service';
 import { RoutineService } from './routines/routine.service';
 import { Component, OnInit } from '@angular/core';
@@ -12,7 +11,7 @@ import { Router } from '@angular/router';
 export class AppComponent implements OnInit {
   title = 'app works!';
 
-  constructor(private routineService: RoutineService, private exerciseService: ExerciseService, private authService: AuthService,
+  constructor(private routineService: RoutineService, private exerciseService: ExerciseService,
     private router: Router) {}
 
   ngOnInit() {
