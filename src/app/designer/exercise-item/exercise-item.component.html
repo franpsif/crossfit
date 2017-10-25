@@ -6,6 +6,6 @@
       <h4 class="list-group-item-heading">{{exercise.name}}</h4>
   </span>
   <span class="pull-right">
-    <p class="list-group-item-text" #difficulty>{{exercise.difficulty | difficultyColor:difficulty}}</p>
+    <p class="list-group-item-text" appDifficultyColor>{{ exercise.difficulty }}</p>
   </span>
 </a>

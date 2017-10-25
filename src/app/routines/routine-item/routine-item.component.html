@@ -1,6 +1,6 @@
 <div class="row">
   <h2 style="display: inline-block;">{{ routine.name }} </h2>
-  <h2 style="display: inline-block;" #averageItem>({{ average | roundNumber | difficultyColor:averageItem }})</h2>
+  <h2 style="display: inline-block;" appDifficultyColor>({{ average | roundNumber }})</h2>
   <div class="row">
     <div class="col-xs-12">
       <mat-chip-list>
@@ -12,7 +12,7 @@
         routerLink="{{exercise.id}}"
         (click)="onItemSelected(item)">
           <h5 style="display: inline-block;">{{ exercise.name }}</h5>
-          <h5 style="display: inline-block;" #difficulty>({{ exercise.difficulty | difficultyColor:difficulty }})</h5>
+          <h5 style="display: inline-block;" appDifficultyColor>({{ exercise.difficulty }})</h5>
         </mat-chip>    
       </mat-chip-list>
     </div>
