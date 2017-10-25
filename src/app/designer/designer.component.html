@@ -1,35 +1,20 @@
 <div class="designer-container">
   <div class="row">
-    <div class="col-xs-4">
-      <h3>Cardio <small>(Difficulty)</small></h3>
-      <div style="overflow-y:auto; max-height: 300px;" id="custom-scroll-style">
-        <app-exercise-item
-          *ngFor="let exerciseEl of cardioExercises"
-          [exercise]="exerciseEl"></app-exercise-item>
-      </div>
-      <br>
-      <button class="btn btn-success" (click)="onAddExercise(1)">Add</button>
-    </div>
-    <div class="col-xs-4">
-      <h3>Machines <small>(Difficulty)</small></h3>
-      <div style="overflow-y:auto; max-height: 300px;" id="custom-scroll-style">
-        <app-exercise-item
-          *ngFor="let exerciseEl of machineExercises"
-          [exercise]="exerciseEl"></app-exercise-item>
-      </div>
-      <br>
-      <button class="btn btn-success" (click)="onAddExercise(2)">Add</button>
-    </div>
-    <div class="col-xs-4">
-      <h3>Body <small>(Difficulty)</small></h3>
-      <div style="overflow-y:auto; max-height: 300px;" id="custom-scroll-style">
-        <app-exercise-item
-          *ngFor="let exerciseEl of bodyExercises"
-          [exercise]="exerciseEl"></app-exercise-item>
-      </div>
-      <br>
-      <button class="btn btn-success" (click)="onAddExercise(3)">Add</button>
-    </div>
+    <app-designer-list 
+      [listName]="'Cardio' "
+      [exerciseList]="cardioExercises"
+      [listType]="1">
+    </app-designer-list>
+    <app-designer-list 
+      [listName]="'Machines' "
+      [exerciseList]="machineExercises"
+      [listType]="2">
+    </app-designer-list>
+    <app-designer-list 
+      [listName]="'Body' "
+      [exerciseList]="bodyExercises"
+      [listType]="3">
+    </app-designer-list>
   </div>
   <hr>
   <div *ngIf="resultExercises.length > 0; else noResultsMessage">

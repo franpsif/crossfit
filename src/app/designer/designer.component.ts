@@ -50,16 +50,8 @@ export class DesignerComponent implements OnInit, OnDestroy {
     this.difficultyAverage = newAverageCount / this.resultExercises.length;
   }
 
-  onAddExercise(listType: number) {
-    let dialogRef = this.dialog.open(AddItemComponent, {
-      height: '400px',
-      width: '500px'
-    });
-    dialogRef.componentInstance.listType = listType;
-  }
-
   onSaveRoutine() {
-    let dialogRef = this.dialog.open(SaveRoutineDialogComponent, {
+    const dialogRef = this.dialog.open(SaveRoutineDialogComponent, {
       height: '210px',
       width: '400px'
     });

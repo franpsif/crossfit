@@ -1,0 +1,10 @@
+<div class="col-xs-4">
+  <h3>{{ listName }} <small>(Difficulty)</small></h3>
+  <div style="overflow-y:auto; max-height: 300px;" id="custom-scroll-style">
+    <app-exercise-item
+      *ngFor="let exerciseEl of exerciseList"
+      [exercise]="exerciseEl"></app-exercise-item>
+  </div>
+  <br>
+  <button class="btn btn-success" (click)="onAddExercise()">Add</button>
+</div>

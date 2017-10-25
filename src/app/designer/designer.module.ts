@@ -1,3 +1,4 @@
+import { DesignerListComponent } from './designer-list/designer-list.component';
 import { SharedModule } from './../shared/shared.module';
 import { AddItemComponent } from './add-item/add-item.component';
 import { DesignerComponent } from './designer.component';
@@ -13,7 +14,8 @@ import { FormsModule } from '@angular/forms';
         AddItemComponent,
         ExerciseItemComponent,
         ResultItemComponent,
-        SaveRoutineDialogComponent
+        SaveRoutineDialogComponent,
+        DesignerListComponent
     ],
     imports: [
         SharedModule,

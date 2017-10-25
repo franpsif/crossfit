@@ -12,7 +12,8 @@ import { NgForm } from '@angular/forms';
 export class AddItemComponent implements OnInit {
   listType: number;
 
-  constructor(private dialogRef: MatDialogRef<AddItemComponent>, private exerciseService: ExerciseService, private snackBar: MatSnackBar) { }
+  constructor(private dialogRef: MatDialogRef<AddItemComponent>,
+    private exerciseService: ExerciseService, private snackBar: MatSnackBar) { }
 
   ngOnInit() {
   }
