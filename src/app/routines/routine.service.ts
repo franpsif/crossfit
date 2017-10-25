@@ -38,9 +38,26 @@ export class RoutineService {
     return this.routineList.slice();
   }
 
-  saveNewRoutine(name: string) {
+  removeRoutine(routineName: string): Observable<Response> {
+    let routineIndex = -1;
+    this.routineList.forEach((routine, index) => {
+      if (routine.name === routineName) {
+        routineIndex = index;
+      }
+    });
+
+    this.routineList.splice(routineIndex, 1);
+
+    return this.saveRoutines();
+  }
+
+  saveNewRoutine(name: string): Observable<Response> {
     this.routineList.push(new Routine(name, this.newRoutine.exercises));
-    this.routineListModified.next(this.getRoutineList());
+    return this.saveRoutines();
+  }
+
+  saveRoutines(): Observable<Response> {
+    this.emitRoutineListModified();
     return this.http.put('https://becomehalterofilico.firebaseio.com/routines.json', this.routineList);
   }
 
@@ -52,7 +69,7 @@ export class RoutineService {
       for (const routine of data) {
         this.routineList.push(routine);
       }
-      this.routineListModified.next(this.getRoutineList());
+      this.emitRoutineListModified();
     }).catch(
         (error: Response) => {
             return Observable.throw('Something went wrong');
@@ -62,6 +79,10 @@ export class RoutineService {
 
   emitResultChanges() {
     this.resultListModified.next(this.getResultExercises());
+  }
+
+  emitRoutineListModified() {
+    this.routineListModified.next(this.getRoutineList());
   }
 
   updateLastSelectedExercise(item) {
