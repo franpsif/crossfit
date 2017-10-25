@@ -16,12 +16,7 @@ import { MatDialogModule, MatSnackBarModule, MatChipsModule, MatProgressBarModul
         DifficultyColorPipe,
         RoundNumberPipe
     ],
-    imports: [
-        MatDialogModule,
-        MatSnackBarModule,
-        MatChipsModule,
-        MatProgressBarModule
-    ],
+    imports: [],
     exports: [
         CommonModule,
         DifficultyValidationDirective,
@@ -29,11 +24,7 @@ import { MatDialogModule, MatSnackBarModule, MatChipsModule, MatProgressBarModul
         CategoryNamePipe,
         DifficultyColorPipe,
         RoundNumberPipe,
-        BrowserAnimationsModule,
-        MatDialogModule,
-        MatSnackBarModule,
-        MatChipsModule,
-        MatProgressBarModule
+        BrowserAnimationsModule
     ]
 })
 export class SharedModule {}

@@ -1,3 +1,4 @@
+import { MaterialModule } from '../material/material/material.module';
 import { DesignerListComponent } from './designer-list/designer-list.component';
 import { SharedModule } from './../shared/shared.module';
 import { AddItemComponent } from './add-item/add-item.component';
@@ -19,7 +20,8 @@ import { FormsModule } from '@angular/forms';
     ],
     imports: [
         SharedModule,
-        FormsModule
+        FormsModule,
+        MaterialModule
     ],
     entryComponents: [
         AddItemComponent,

@@ -1,3 +1,4 @@
+import { MaterialModule } from '../material/material/material.module';
 import { RouterModule } from '@angular/router';
 import { SharedModule } from './../shared/shared.module';
 import { ExerciseDetailComponent } from './exercise-detail/exercise-detail.component';
@@ -16,7 +17,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     imports: [
         CommonModule,
         SharedModule,
-        RouterModule
+        RouterModule,
+        MaterialModule
     ],
     providers: [],
     bootstrap: [RoutinesComponent]
