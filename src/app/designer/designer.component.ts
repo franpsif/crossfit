@@ -34,10 +34,6 @@ export class DesignerComponent implements OnInit, OnDestroy {
     this.calculateNewAverage();
 
     this.subscribeToChanges();
-
-    if (this.cardioExercises.length === 0 || this.machineExercises.length === 0 || this.bodyExercises.length === 0) {
-      this.exerciseService.fetchAllExercises();
-    }
   }
 
   calculateNewAverage() {

@@ -15,6 +15,10 @@ export class ExerciseService {
   private machineExercises: Exercise[] = [];
   private bodyExercises: Exercise[] = [];
 
+  private cardioExercisesUrl = 'https://becomehalterofilico.firebaseio.com/cardioExercises.json';
+  private machinesExercisesUrl = 'https://becomehalterofilico.firebaseio.com/machinesExercises.json';
+  private bodyExercisesUrl = 'https://becomehalterofilico.firebaseio.com/bodyExercises.json';
+
   constructor(private http: Http) { }
 
   saveNewExercise(name: string, difficulty: number, listType: number, exampleLink: string) {
@@ -22,13 +26,13 @@ export class ExerciseService {
 
     if (listType === 1) {
       newExercise = new Exercise(name, difficulty, this.calculateId(), 1, exampleLink);
-      return this.saveNewCardioExercise(newExercise);
+      return this.saveNewExerciseOnDataBase(newExercise, this.cardioExercises, this.cardioExercisesUrl, 1);
     } else if (listType === 2) {
       newExercise = new Exercise(name, difficulty, this.calculateId(), 2, exampleLink);
-      return this.saveNewMachinesExercise(newExercise);
+      return this.saveNewExerciseOnDataBase(newExercise, this.machineExercises, this.machinesExercisesUrl, 2);
     } else if (listType === 3) {
       newExercise = new Exercise(name, difficulty, this.calculateId(), 3, exampleLink);
-      return this.saveNewBodyExercise(newExercise);
+      return this.saveNewExerciseOnDataBase(newExercise, this.bodyExercises, this.bodyExercisesUrl, 3);
     }
   }
 
@@ -59,46 +63,40 @@ export class ExerciseService {
     return exercise;
   }
 
-  saveNewCardioExercise(exercise: Exercise) {
-    this.cardioExercises.push(exercise);
-    this.emitCardioChanges();
+  saveNewExerciseOnDataBase(exercise: Exercise, exerciseList: Exercise[], url: string, type: number) {
+    exerciseList.push(exercise);
+    this.emitListChanges(type);
 
-    return this.http.put('https://becomehalterofilico.firebaseio.com/cardioExercises.json', this.cardioExercises);
-  }
+    return this.http.put(url, exerciseList);
 
-  saveNewMachinesExercise(exercise: Exercise) {
-    this.machineExercises.push(exercise);
-    this.emitMachinesChanges();
-
-    return this.http.put('https://becomehalterofilico.firebaseio.com/machinesExercises.json', this.machineExercises);
-  }
-
-  saveNewBodyExercise(exercise: Exercise) {
-    this.bodyExercises.push(exercise);
-    this.emitBodyChanges();
-
-    return this.http.put('https://becomehalterofilico.firebaseio.com/bodyExercises.json', this.bodyExercises);
   }
 
   fetchAllExercises() {
-    this.fetchCardioExercises();
-    this.fetchMachinesExercises();
-    this.fetchBodyExercises();
+    this.fetchExerciseList(this.cardioExercisesUrl, 1);
+    this.fetchExerciseList(this.machinesExercisesUrl, 2);
+    this.fetchExerciseList(this.bodyExercisesUrl, 3);
   }
 
-  fetchCardioExercises() {
-    return this.http.get('https://becomehalterofilico.firebaseio.com/cardioExercises.json')
+  fetchExerciseList(url: string, type: number) {
+    return this.http.get(url)
     .map(
       (response: Response) => {
         const data = response.json();
-        const newCardioExercises: Exercise[] = [];
+        const newExercisesList: Exercise[] = [];
 
-        for (const cardioExercise of data) {
-          newCardioExercises.push(cardioExercise);
+        for (const exercise of data) {
+          newExercisesList.push(exercise);
         }
 
-        this.cardioExercises = newCardioExercises;
-        this.emitCardioChanges();
+        if (type === 1) {
+          this.cardioExercises = newExercisesList;
+        } else if (type === 2) {
+          this.machineExercises = newExercisesList;
+        } else if (type === 3) {
+          this.bodyExercises = newExercisesList;
+        }
+
+        this.emitListChanges(type);
       }
     ).catch(
         (error: Response) => {
@@ -107,58 +105,14 @@ export class ExerciseService {
     ).subscribe();
   }
 
-  fetchMachinesExercises() {
-    return this.http.get('https://becomehalterofilico.firebaseio.com/machinesExercises.json')
-    .map(
-      (response: Response) => {
-        const data = response.json();
-        const newMachinesExercises: Exercise[] = [];
-
-        for (const machinesExercise of data) {
-          newMachinesExercises.push(machinesExercise);
-        }
-
-        this.machineExercises = newMachinesExercises;
-        this.emitMachinesChanges();
-      }
-    ).catch(
-        (error: Response) => {
-            return Observable.throw('Something went wrong');
-        }
-    ).subscribe();
-  }
-
-  fetchBodyExercises() {
-    return this.http.get('https://becomehalterofilico.firebaseio.com/bodyExercises.json')
-    .map(
-      (response: Response) => {
-        const data = response.json();
-        const newBodyExercises: Exercise[] = [];
-
-        for (const bodyExercise of data) {
-          newBodyExercises.push(bodyExercise);
-        }
-
-        this.bodyExercises = newBodyExercises;
-        this.emitBodyChanges();
-      }
-    ).catch(
-        (error: Response) => {
-            return Observable.throw('Something went wrong');
-        }
-    ).subscribe();
-  }
-
-  emitCardioChanges() {
-    this.cardioListModified.next(this.getCardioExercises());
-  }
-
-  emitMachinesChanges() {
-    this.machinesListModified.next(this.getMachineExercises());
-  }
-
-  emitBodyChanges() {
-    this.bodyListModified.next(this.getBodyExercises());
+  emitListChanges(type: number) {
+    if (type === 1) {
+      this.cardioListModified.next(this.getCardioExercises());
+    } else if (type === 2) {
+      this.machinesListModified.next(this.getMachineExercises());
+    } else if (type === 3) {
+      this.bodyListModified.next(this.getBodyExercises());
+    }
   }
 
   getCardioExercises() {
